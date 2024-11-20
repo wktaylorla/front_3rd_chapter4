@@ -66,3 +66,58 @@
 
 - Repository secret과 환경변수
   : Github 저장소에 안전하게 저장되는 암호화된 환경변수이다. 민감한 정보를 코드에 노출하지 않고 안전하게 관리할 수 있다.
+
+# CDN과 성능최적화
+
+## 성능 측정
+
+- 측정 도구 : Chrome DevTools Network tab, Lighthouse
+
+- 측정 항목 : 로딩 시간, 네트워크 성능, 웹 바이탈
+
+### S3 버킷 웹사이트
+
+#### 네트워크 탭
+
+![S3 버킷 웹사이트 네트워크 탭](https://i.postimg.cc/50nz10wS/Pasted-Graphic-4.png)
+
+#### 라이트하우스
+
+![S3 버킷 웹사이트 라이트하우스](https://i.postimg.cc/htT7vMLj/Pasted-Graphic-2.png)
+
+### CloudFront 배포
+
+#### 네트워크 탭
+
+![CloudFront 배포 네트워크 탭](https://i.postimg.cc/PqHvwZyM/Pasted-Graphic-5.png)
+
+#### 라이트하우스
+
+![CloudFront 배포 라이트하우스](https://i.postimg.cc/SsNXZhw2/Pasted-Graphic-3.png)
+
+## 성능 비교 분석
+
+### 라이트하우스 성능 비교
+
+| 측정 지표                | S3 직접 호스팅 | CloudFront | 개선율 |
+| ------------------------ | -------------- | ---------- | ------ |
+| Performance              | 84             | 100        | +19.0% |
+| First Contentful Paint   | 0.8s           | 1.1s       | -37.5% |
+| Speed Index              | 4.7s           | 1.3s       | +72.3% |
+| Largest Contentful Paint | 4.0s           | 1.2s       | +70.0% |
+
+## 개선 사항
+
+### 응답 시간 개선
+
+- cloudfront를 통해 받은 컨텐츠의 사이즈가 더 작고, 응답속도가 더 빠름.
+
+### 사용자 경험 개선
+
+- 전반적으로 First Contentful Paint를 제외한 모든 지표에서 큰 폭의 성능 향상이 있었습니다.
+
+## 결론
+
+- CloudFront를 사용하여 콘텐츠 전송 속도를 높이고 사용자 경험을 개선할 수 있다.
+
+- 캐싱 전략을 최적화하여 네트워크 부하를 줄이고 응답 시간을 개선할 수 있다.
