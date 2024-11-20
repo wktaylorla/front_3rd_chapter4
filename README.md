@@ -114,7 +114,7 @@
 
 ### 사용자 경험 개선
 
-- 전반적으로 First Contentful Paint를 제외한 모든 지표에서 큰 폭의 성능 향상이 있었습니다.
+- 전반적으로 First Contentful Paint를 제외한 모든 지표에서 큰 폭의 성능 향상.
 
 ## 결론
 
